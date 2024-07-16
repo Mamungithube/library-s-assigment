@@ -17,14 +17,14 @@
               <h5 class="nav-item">
                 <a class="nav-link active " aria-current="page" href="{% url 'home' %}">Library HomePage</a>
               </h5>
-              <h5 class="nav-item">
-                <a class="nav-link" href="{% url 'Deposit' %}">deposit</a>
-              </h5>
+
             </ul>
             
             {% if request.user.is_authenticated %}
             <div class="mx-5">Welcome, {{ request.user.email }} (balance : {{request.user.account.balance}}) </div>
-
+            <a class="d-flex pe-4" href="{% url 'Deposit' %}" style="text-decoration: none;">
+              <button class="btn btn-outline-light" type="button">deposit</button>
+            </a> 
             <form method = 'post' action="{% url 'logout' %}">
               {% csrf_token %}
               <button class="btn btn-outline-warning me-4" type='submit'>log out</button>

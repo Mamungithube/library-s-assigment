@@ -23,5 +23,5 @@ urlpatterns = [
     path('', HomeView.as_view(),name='home'),
     path('authorisation/',include('libraryapp.urls')),
     path('deposit/',include('core.urls')),
-    path('catagory/<slug:Book_slug>/',views.home, name = 'book_catagory'),
+    path('brand/<slug:brand_slug>/',views.home, name = 'brand_wise_car'),
 ]

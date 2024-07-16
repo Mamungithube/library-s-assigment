@@ -5,11 +5,12 @@ class Book_category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100,blank=True,unique=True)
 
+
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"
 
 class Book(models.Model):
-    Book_image = models.ImageField(upload_to="car/media/uploads/")
+    Book_image = models.ImageField(upload_to="book/media/uploads/")
     Book_name = models.CharField(max_length=200)
     Borrow_price = models.IntegerField()
     Book_description = models.CharField(max_length=200)
