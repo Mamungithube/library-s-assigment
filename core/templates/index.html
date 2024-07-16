@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="d-flex justify-content-around gap-4">
+  <div>
+    <h2>Welcome to My Library</h2>
+
+</div>
+<hr />
+
+<div class="">
+  {% for i in data %}
+  <h2>jadhbfhgb</h2>
+  <a class="btn btn-outline-danger m-2 text-decoration-none text-dark "
+      href="{% url 'catagory' i.slug %}">Name: {{i}}</a>
+  {% endfor %}
+</div>
+
+{% comment %} <hr />
+<h3>{{data | length}} Book found</h3>
+<div class="row ">
+  {% for post in data %}
+  <div class="col-4 p-3" style="height: 15%;">
+    <img src="" class="card-img-top" alt="car_Image" style="height: 350px;">
+    <div class="card-body">
+      <hr />
+      <h5 class="card-title">Book Name : </h5>
+      </br>
+      <p class="card-text">description : </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Book prize :  $</li>
+      <li class="list-group-item">Car Quiatity :  </li>
+    </ul>
+  <div>
+    <a href="{% url 'book_detail' post.id %}" class="btn btn-outline-warning" type="button">
+      View Details
+    </a>
+  </div>
+
+  </div>
+
+  {% endfor %} {% endcomment %}
+</div>
+{% endblock %}
