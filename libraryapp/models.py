@@ -5,7 +5,6 @@ class Book_category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100,blank=True,unique=True)
 
-
     def __str__(self):
         return f"{self.name}"
 

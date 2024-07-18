@@ -6,4 +6,9 @@ admin.site.register(Book)
 admin.site.register(Profile)
 admin.site.register(Comment)
 admin.site.register(PaymentModel)
-admin.site.register(Book_category)
+
+class BookCategory(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['name','slug']
+
+admin.site.register(Book_category, BookCategory)
