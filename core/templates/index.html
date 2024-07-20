@@ -4,20 +4,32 @@
 <div>
   <h1 style="text-align: center; color: white;">Welcome to My Library</h1>
   <hr>
-  <div class="">
+  {% comment %} <div>
     <h2 style="text-align: center; color: white;">Categorys Name</h2>
-    <ul class="d-flex justify-content-center align-items-center list-unstyled pt-4">
+  </div> {% endcomment %}
+
+  <div class="dropdown "style="text-align: center;size = 30%">
+    <button class="btn btn-danger btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown Categorys below
+    </button>
+    <ul class="dropdown-menu bg-dark">
       {% for category in categorys %}
-      <li class="mx-2">
-        <a class="btn btn-outline-info m-2 text-decoration-none text-light" href="{% url 'category_wise_book' category.slug %}">{{ category.name }}</a>
+      <li class="mx-2 ">
+        <a class="btn btn-outline-info m-2 text-decoration-none text-light"
+          href="{% url 'category_wise_book' category.slug %}">{{ category.name }}</a>
+      </li>
+      <li class="mx-2 ">
       </li>
       {% endfor %}
     </ul>
   </div>
+
+
+
   <h3>{{ book | length }} book found</h3>
   <div class="row">
     {% for post in book %}
-    <div class="col-4 p-5 h-100 shadow-sm" style="height: 20%;">
+    <div class="col-4 p-5 h-100 shadow-sm bg-dark" style="height: 20%;">
       <img src="{{ post.Book_image.url }}" class="card-img-top" alt="Book_Image" style="height: 350px;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Book Name: {{ post.Book_name }}</li>
@@ -34,4 +46,4 @@
     </div>
     {% endfor %}
   </div>
-{% endblock %}
+  {% endblock %}

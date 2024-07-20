@@ -56,7 +56,7 @@ class UpdateUserProfileView(LoginRequiredMixin,UpdateView):
 class BookDetailView(DetailView):
     model = Book
     pk_url_kwarg = 'pk'
-    template_name = 'comment.html'
+    template_name = 'details.html'
     context_object_name = 'Book'
 
     def post(self, request, *args, **kwargs):
@@ -86,10 +86,10 @@ def buy_now(request, Book_id):
         Book_data.save()
         
         payment = PaymentModel.objects.create(
-            Book_model=Book_data,
+            Book_name=Book_data,
             user=request.user,
             net_quantity=1,
-            total_price=Book_data.Book_price
+            total_price=Book_data.Borrow_price
         )
 
-    return redirect('Book_detail', pk=Book_id)
+    return redirect('book_detail', pk=Book_id)

@@ -8,4 +8,23 @@
     <h5>write to update your profile and click the edit button</h5>
 <button class="btn btn-warning">Edit Now</button>
 </form>
+<hr>
+
+<h1>this is Book Borrow buy history</h1>
+
+<div class="row d-flex flex-wrap pt-3">
+    {% for B in Bookall %}
+    <div class="col-3 mx-2">
+        <div class="card border " style="width: 18rem;">
+            <img src="{{B.Book_name.Book_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{B.Book_name.Book_name}}</h5>
+                <p class="card-text">{{B.Book_name.Borrow_price}}$</p>
+                <p class="card-text">{{B.Book_name.category}}</p>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
