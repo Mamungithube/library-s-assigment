@@ -29,13 +29,22 @@
 
 
 <div class="mx-5">
-<h4>Comments</h4>
-<ul>
-  {% for comment in comments %}
-  <li>by {{ comment.name }} - {{ comment.created_at }}</li>
-  <li>comment:  {{ comment.comment }}</li>
+  <h4>Comments</h4>
+  <ul>
+    {% for com in commentall %}
+    <li>by {{ com.name }} - {{ com.created_at }}</li>
+    <li>comment: {{ com.comment }}</li>
 
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
 </div>
+
+<form method="post" style="width: 50%; height: 500px " class="mx-5">
+  <h2>Add Comment</h2>
+  {% csrf_token %}
+  {{form | crispy}}
+
+  <button class="btn btn-warning">Submit</button>
+</form>
+
 {% endblock %}

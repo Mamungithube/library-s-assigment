@@ -33,7 +33,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Comment by {self.name} on {self.car.car_name}"
+        return f"Comment by {self.name} on {self.book.Book_image}"
     
 
 class PaymentModel(models.Model):

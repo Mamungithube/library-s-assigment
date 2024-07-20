@@ -72,7 +72,7 @@ class BookDetailView(DetailView):
 
         context = super().get_context_data(**kwargs)
         Book_post = self.object
-        context['comments'] = Comment.objects.all()
+        context['commentall'] = Comment.objects.all()
         context['form'] = CommentForm()
         return context
     
