@@ -25,13 +25,14 @@
             <a class="d-flex pe-4" href="{% url 'Deposit' %}" style="text-decoration: none;">
               <button class="btn btn-outline-light" type="button">deposit</button>
             </a> 
+            <a class="d-flex pe-4" href="{% url 'profile' %}" style="text-decoration: none;">
+              <button class="btn btn-outline-success" type="button">profile</button>
+            </a> 
             <form method = 'post' action="{% url 'logout' %}">
               {% csrf_token %}
-              <button class="btn btn-outline-warning me-4" type='submit'>log out</button>
+              <button class="btn btn-outline-danger me-4" type='submit'>log out</button>
             </form>
-            <a class="d-flex pe-4" href="{% url 'profile' %}" style="text-decoration: none;">
-              <button class="btn btn-outline-danger" type="button">profile</button>
-            </a> 
+            
             {% else %}
                 <a class="d-flex me-4" href="{% url 'register' %}" style="text-decoration: none;">
                     <button class="btn btn-primary" type="button">Signup</button>

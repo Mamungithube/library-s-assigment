@@ -50,31 +50,29 @@ class UpdateUserProfileView(LoginRequiredMixin,UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        return response
-    
+        return response 
 
 class BookDetailView(DetailView):
     model = Book
     pk_url_kwarg = 'pk'
     template_name = 'details.html'
-    context_object_name = 'Book'
-
+    context_object_name = 'Book' 
     def post(self, request, *args, **kwargs):
         comment_form = CommentForm(data=self.request.POST)
-        Book_object = self.get_object()
+        book_object = self.get_object()
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
-            new_comment.Book = Book_object
+            new_comment.book = book_object 
             new_comment.save()
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-        Book_post = self.object
-        context['commentall'] = Comment.objects.all()
+        book_object = self.object
+        context['commentall'] = Comment.objects.filter(book=book_object)  # Filter comments by the specific book
         context['form'] = CommentForm()
         return context
+
     
 
 
