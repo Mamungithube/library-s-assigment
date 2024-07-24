@@ -73,7 +73,7 @@ class BookDetailView(DetailView):
         context['form'] = CommentForm()
         return context
 
-    
+  
 
 
 @login_required

@@ -2,29 +2,38 @@
 {% block content %}
 <form style="width:50% ; margin : auto" method="post">
     <h1>welcome to your profile</h1>
-    <br/>
+    <br />
     {% csrf_token %}
     {{ form.as_p }}
     <h5>Write to update your Profile and click the Edit button</h5>
-<button class="btn btn-warning">Edit Now</button>
+    <button class="btn btn-warning">Edit Now</button>
 </form>
 <hr>
 
-<h1>this is Book Borrow buy history</h1>
+<h1>This is Book Borrow buy history</h1>
 
-<div class="row d-flex flex-wrap pt-3">
-    {% for B in Bookall %}
-    <div class="col-3 mx-2">
-        <div class="card border " style="width: 18rem;">
-            <img src="{{B.Book_name.Book_image.url}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{B.Book_name.Book_name}}</h5>
-                <p class="card-text">{{B.Book_name.Borrow_price}}$</p>
-                <p class="card-text">{{B.Book_name.category}}</p>
-            </div>
-        </div>
 
-    </div>
-    {% endfor %}
-</div>
+{% for B in Bookall %}
+<table class="table caption-top text-light">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+
+            <th scope="col">Borrow Time</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Borrow price</th>
+            <th scope="col">borrow category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>{{B.purchese_date}}</td>
+            <td>{{B.Book_name.Book_name}}</td>
+            <td>{{B.Book_name.Borrow_price}}</td>
+            <td>{{B.Book_name.category}}y</td>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
 {% endblock %}
