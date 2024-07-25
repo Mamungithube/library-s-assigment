@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<form style="width:50% ; margin : auto" method="post">
+<form style="width:40% ;padding-left: 80px;" method="post">
     <h1>welcome to your profile</h1>
     <br />
     {% csrf_token %}
-    {{ form.as_p }}
+    <h4>{{ form.as_p }}</h4>
     <h5>Write to update your Profile and click the Edit button</h5>
-    <button class="btn btn-warning">Edit Now</button>
+    <button class="btn btn-warning m-4">Edit Now</button>
 </form>
 <hr>
 

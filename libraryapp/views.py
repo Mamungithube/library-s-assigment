@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.views.generic import DetailView
@@ -9,7 +9,7 @@ from .forms import ChangeuserData,RegistrationForm,CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile,Comment,Book,PaymentModel
 from django.contrib.auth.decorators import login_required
-
+from core.models import UserAccount
 
 
 class CustomLoginView(LoginView):
@@ -73,16 +73,20 @@ class BookDetailView(DetailView):
         context['form'] = CommentForm()
         return context
 
-  
 
 
 @login_required
 def buy_now(request, Book_id):
-    Book_data = Book.objects.get(pk=Book_id)
-    if 0 < Book_data.Quantity:
+    Book_data = get_object_or_404(Book, pk=Book_id)
+    user_profile = get_object_or_404(UserAccount, user=request.user)
+    
+    if Book_data.Quantity > 0 and user_profile.balance >= Book_data.Borrow_price:
         Book_data.Quantity -= 1
         Book_data.save()
         
+        user_profile.balance -= Book_data.Borrow_price
+        user_profile.save()
+
         payment = PaymentModel.objects.create(
             Book_name=Book_data,
             user=request.user,
@@ -91,3 +95,4 @@ def buy_now(request, Book_id):
         )
 
     return redirect('book_detail', pk=Book_id)
+
