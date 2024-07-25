@@ -34,17 +34,18 @@
   <h3>{{ book | length }} book found</h3>
   <div class="row">
     {% for post in book %}
-    <div class="d-plax col-4 p-5 h-100" style="height: 20%;background : black">
+    <div class="d-plax col-4 p-5 h-100" style="height: 20%;background: rgba(0, 128, 0, 0.3);">
       <img src="{{ post.Book_image.url }}" class="card-img-top" alt="Book_Image" style="height: 350px;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Book Name: {{ post.Book_name }}</li>
-        <li class="list-group-item">Description: {{ post.Book_description }}</li>
+        <li class="list-group-item">Author Name: {{ post.Author_name }}</li>
+        <li class="list-group-item">Description: {{ post.Book_description|slice:":15" }}...</li>
         <li class="list-group-item">Borrow Price: {{ post.Borrow_price }} $</li>
         <li class="list-group-item">Category Name: {{ post.category }}</li>
         <li class="list-group-item">Book Quantity: {{ post.Quantity }}</li>
       </ul>
       <div class="pt-4 mx-5">
-        <a href="{% url 'book_detail' post.id %}" class="btn btn-outline-success" type="button">
+        <a href="{% url 'book_detail' post.id %}" class="btn btn-danger" type="button">
           View Details
         </a>
       </div>

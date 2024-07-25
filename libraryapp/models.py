@@ -11,6 +11,7 @@ class Book_category(models.Model):
 class Book(models.Model):
     Book_image = models.ImageField(upload_to="book/media/uploads/")
     Book_name = models.CharField(max_length=200)
+    Author_name = models.CharField(max_length=200)
     Borrow_price = models.IntegerField()
     Book_description = models.CharField(max_length=200)
     Quantity = models.IntegerField(default = 0)
