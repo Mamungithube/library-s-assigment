@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
 ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://library-s-assigment.onrender.com',
+]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
